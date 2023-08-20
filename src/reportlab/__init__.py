@@ -21,7 +21,7 @@ def _fake_import(fn,name):
     from importlib import machinery
     m = machinery.SourceFileLoader(name,fn)
     try:
-        sys.modules[name] = m.load_module(name)
+        sys.modules[name] = m.create_module(name)
     except FileNotFoundError:
         raise ImportError('file %s not found' % ascii(fn))
 
